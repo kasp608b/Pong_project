@@ -7,7 +7,7 @@ import greenfoot.*;
  * @author The teachers 
  * @version 1
  */
-public class Paddle extends Actor
+public class TopPaddle extends Actor
 {
     private int width;
     private int height;
@@ -16,7 +16,7 @@ public class Paddle extends Actor
     /**
      * Constructs a new paddle with the given dimensions.
      */
-    public Paddle(int width, int height)
+    public TopPaddle(int width, int height)
     {
         this.width = width;
         this.height = height;
@@ -25,30 +25,29 @@ public class Paddle extends Actor
     }
 
     /**
-     * Act - do whatever the Paddle wants to do. This method is called whenever
+     * Act - do whatever the TopPaddle wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        move();
+        tryChangeDirection();
+        setLocation(getX() + dx, getY());
     }    
 
     /**
      * Will rotate the paddle 180 degrees if the paddle is at worlds edge.
      */
-    private void move()
+    private void tryChangeDirection()
     {
-        if (Greenfoot.isKeyDown("left"))
+        //Check to see if we are touching the outer boundaries of the world:
+        // IF we are touching the right boundary OR we are touching the left boundary:
+        if(getX() + width/2 >= getWorld().getWidth() || getX() - width/2 <= 0)
         {
-            move(-2);
-            
-        }
-        if (Greenfoot.isKeyDown("right"))
-        {
-            move(2);
-    
+            //Change our 'x' direction to the inverted direction:
+            dx = dx * -1;
         }
     }
+
     /**
      * Creates and sets an image for the paddle, the image will have the same dimensions as the paddles width and height.
      */
