@@ -30,8 +30,8 @@ public class TopPaddle extends Actor
      */
     public void act() 
     {
-        tryChangeDirection();
         setLocation(getX() + dx, getY());
+        tryChangeDirection();
     }    
 
     /**
@@ -43,8 +43,9 @@ public class TopPaddle extends Actor
         // IF we are touching the right boundary OR we are touching the left boundary:
         if(getX() + width/2 >= getWorld().getWidth() || getX() - width/2 <= 0)
         {
-            //Change our 'x' direction to the inverted direction:
-            dx = dx * -1;
+            PingWorld.paddle = 0;
+            getWorld().removeObject(this);
+            
         }
     }
 
