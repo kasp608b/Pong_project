@@ -38,7 +38,7 @@ public class PingWorld extends World
     {
         if (paddle < 1)
         {
-            addObject(new TopPaddle(100,20),60, Greenfoot.getRandomNumber(WORLD_HEIGHT/4));
+            addObject(new TopPaddle(100,20),60, Greenfoot.getRandomNumber((WORLD_HEIGHT/4))+50);
             paddle++;
         }
     }
