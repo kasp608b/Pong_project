@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Score extends Actor
 {
-    int score = 0;
+    private int score = 0;
     
     /**
      * Act - do whatever the Score wants to do. This method is called whenever
@@ -22,5 +22,10 @@ public class Score extends Actor
     public void addScore()
     {
         score++;
+    }
+    
+    public void resetScore()
+    {
+        score = 0;
     }
 }
