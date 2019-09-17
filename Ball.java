@@ -98,6 +98,7 @@ public class Ball extends Actor
             if (! hasBouncedHorizontally)
             {
                 revertHorizontally();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
@@ -117,6 +118,7 @@ public class Ball extends Actor
             if (! hasBouncedVertically)
             {
                 revertVertically();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
@@ -130,6 +132,7 @@ public class Ball extends Actor
         if (isTouchingPaddle())
         {
             hasBouncedVertically = true;
+            Greenfoot.playSound("PingPong.wav");
             if (hasBouncedVertically)
             {  
                 revertVertically();
@@ -157,6 +160,7 @@ public class Ball extends Actor
             if (! hasBouncedVertically)
             {
                 revertVertically();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
