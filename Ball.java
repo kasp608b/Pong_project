@@ -53,6 +53,7 @@ public class Ball extends Actor
         else
         {
             drawScore();
+            drawLevelCounter();
             move(speed);
             checkBounceOffWalls();
             checkBounceOffCeiling();
@@ -149,6 +150,7 @@ public class Ball extends Actor
                 {
                     speed = speed + 1;
                     counter = 0;
+                    incrementLevelCounter();
                 }
             }
         }
@@ -185,6 +187,7 @@ public class Ball extends Actor
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             resetScore();
+            resetLevelCounter();
         }
     }
 
@@ -215,7 +218,7 @@ public class Ball extends Actor
         if (scoreDrawn != true)
             bounceScore = new Score();
         
-            getWorld().addObject(bounceScore, 100, 300);
+            getWorld().addObject(bounceScore, 100, 100);
             scoreDrawn = true;
     }
     
@@ -229,6 +232,26 @@ public class Ball extends Actor
         bounceScore.resetScore();
     }
 
+    private LevelCounter bounceLevel;
+    private boolean levelDrawn;
+    public void drawLevelCounter()
+    {
+        if (levelDrawn != true)
+            bounceLevel = new LevelCounter();
+        
+            getWorld().addObject(bounceLevel, 250, 100);
+            levelDrawn = true;
+    }
+    
+    public void incrementLevelCounter()
+    {
+            bounceLevel.addLevel();
+    }
+    
+    public void resetLevelCounter()
+    {
+        bounceLevel.resetLevel();
+    }
     /**
      * Initialize the ball settings.
      */
