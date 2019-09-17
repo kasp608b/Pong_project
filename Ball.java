@@ -81,31 +81,6 @@ public class Ball extends Actor
     { 
         return (getY() >= getWorld().getHeight() - BALL_SIZE/2);
     }
-    
-    public boolean intersectTopPaddle()
-    {
-        Actor tp = getOneIntersectingObject(TopPaddle.class);
-        return (tp != null);
-    }
-
-    /**
-     * Check to see if the ball should bounce off the ceiling.
-     * If touching the ceiling the ball is bouncing off.
-     */
-    private void checkBounceTopPaddle()
-    {
-        if (intersectTopPaddle())
-        {
-            if (! hasBouncedVertically)
-            {
-                revertVertically();
-            }
-        }
-        else
-        {
-            hasBouncedVertically = false;
-        }
-    }
 
     /**
      * Check to see if the ball should bounce off one of the walls.
@@ -144,7 +119,7 @@ public class Ball extends Actor
             hasBouncedVertically = false;
         }
     }
-    
+
     /**
      * Check to see if the ball should be restarted.
      * If touching the floor the ball is restarted in initial position and speed.
