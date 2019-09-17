@@ -54,6 +54,8 @@ public class Ball extends Actor
             move(speed);
             checkBounceOffWalls();
             checkBounceOffCeiling();
+            checkBounceOffPaddle();
+            checkBounceOffTopPaddle();
             checkRestart();
         }
     }    
@@ -80,6 +82,16 @@ public class Ball extends Actor
     private boolean isTouchingFloor()
     { 
         return (getY() >= getWorld().getHeight() - BALL_SIZE/2);
+    }
+    
+        private boolean isTouchingPaddle()
+    {
+        return (getOneIntersectingObject(Paddle.class)) != null;
+    }
+    
+    private boolean isTouchingTopPaddle()
+    {
+        return (getOneIntersectingObject(TopPaddle.class)) != null;
     }
 
     /**
@@ -108,6 +120,39 @@ public class Ball extends Actor
     private void checkBounceOffCeiling()
     {
         if (isTouchingCeiling())
+        {
+            if (! hasBouncedVertically)
+            {
+                revertVertically();
+            }
+        }
+        else
+        {
+            hasBouncedVertically = false;
+        }
+    }
+    
+    private void checkBounceOffPaddle()
+    {
+        if (isTouchingPaddle())
+        {
+            if (! hasBouncedVertically)
+            {
+                    
+                revertVertically();
+
+            }
+        }
+        else
+        {
+            hasBouncedVertically = false;
+        }
+    }
+    
+        private void checkBounceOffTopPaddle()
+    {
+        if (isTouchingTopPaddle())
+        
         {
             if (! hasBouncedVertically)
             {
