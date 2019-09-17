@@ -128,7 +128,7 @@ public class Ball extends Actor
         }
         else
         {
-            hasBouncedVertically = false;
+            
         }
     }
     
@@ -136,16 +136,18 @@ public class Ball extends Actor
     {
         if (isTouchingPaddle())
         {
-            if (! hasBouncedVertically)
+            hasBouncedVertically = true;
+            if (hasBouncedVertically)
             {
                     
                 revertVertically();
+                hasBouncedVertically = false;
 
             }
         }
         else
         {
-            hasBouncedVertically = false;
+            
         }
     }
     
@@ -161,7 +163,7 @@ public class Ball extends Actor
         }
         else
         {
-            hasBouncedVertically = false;
+            
         }
     }
 
