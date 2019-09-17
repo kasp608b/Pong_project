@@ -13,15 +13,13 @@ public class PingWorld extends World
     private static final int WORLD_HEIGHT = 700;
     public static int paddle;
     Score score = new Score();
-    
+
     /**
      * Constructor for objects of class PingWorld.
      */
     public PingWorld(boolean gameStarted)
     {
-        super(WORLD_WIDTH, WORLD_HEIGHT, 1);
-        
-        
+        super(WORLD_WIDTH, WORLD_HEIGHT, 1); 
         if (gameStarted)
         {
             GreenfootImage background = getBackground();

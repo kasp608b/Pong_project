@@ -21,7 +21,7 @@ public class Paddle extends Actor
         this.width = width;
         this.height = height;
         dx = 1;
-        setImage("leaf.jpg");
+        createImage();
     }
 
     /**
