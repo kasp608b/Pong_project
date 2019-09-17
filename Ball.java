@@ -135,7 +135,7 @@ public class Ball extends Actor
         {
             hasBouncedVertically = true;
             Greenfoot.playSound("PingPong.wav");
-            noBounce = 30;
+            noBounce = 60;
             revertVertically();
             hasBouncedVertically = false;
             counter++;
@@ -230,7 +230,7 @@ public class Ball extends Actor
      */
     private void init()
     {
-        speed = 2;
+        speed = 1;
         delay = DELAY_TIME;
         hasBouncedHorizontally = false;
         hasBouncedVertically = false;
