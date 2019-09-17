@@ -19,26 +19,17 @@ public class Ball extends Actor
     private boolean hasBouncedHorizontally;
     private boolean hasBouncedVertically;
     private int delay;
-
+    
     /**
      * Contructs the ball and sets it in motion!
      */
     public Ball()
     {
-        createImage();
+        setImage("wombat.jpg");
         init();
     }
 
-    /**
-     * Creates and sets an image of a black ball to this actor.
-     */
-    private void createImage()
-    {
-        GreenfootImage ballImage = new GreenfootImage(BALL_SIZE,BALL_SIZE);
-        ballImage.setColor(Color.BLACK);
-        ballImage.fillOval(0, 0, BALL_SIZE, BALL_SIZE);
-        setImage(ballImage);
-    }
+
 
     /**
      * Act - do whatever the Ball wants to do. This method is called whenever
