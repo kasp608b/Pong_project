@@ -16,29 +16,21 @@ public class Ball extends Actor
 
     private int speed;
     private int counter;
+    private int noBounce;
     private boolean hasBouncedHorizontally;
     private boolean hasBouncedVertically;
     private int delay;
-
+    
     /**
      * Contructs the ball and sets it in motion!
      */
     public Ball()
     {
-        createImage();
+        setImage("wombat.jpg");
         init();
     }
 
-    /**
-     * Creates and sets an image of a black ball to this actor.
-     */
-    private void createImage()
-    {
-        GreenfootImage ballImage = new GreenfootImage(BALL_SIZE,BALL_SIZE);
-        ballImage.setColor(Color.BLACK);
-        ballImage.fillOval(0, 0, BALL_SIZE, BALL_SIZE);
-        setImage(ballImage);
-    }
+
 
     /**
      * Act - do whatever the Ball wants to do. This method is called whenever
@@ -58,6 +50,7 @@ public class Ball extends Actor
             checkBounceOffWalls();
             checkBounceOffCeiling();
             checkBounceOffPaddle();
+            noBounce--;
             checkBounceOffTopPaddle();
             checkRestart();
         }
@@ -108,6 +101,7 @@ public class Ball extends Actor
             if (! hasBouncedHorizontally)
             {
                 revertHorizontally();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
@@ -127,6 +121,7 @@ public class Ball extends Actor
             if (! hasBouncedVertically)
             {
                 revertVertically();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
@@ -137,9 +132,10 @@ public class Ball extends Actor
     
     private void checkBounceOffPaddle()
     {
-        if (isTouchingPaddle())
+        if (isTouchingPaddle() && noBounce < 0)
         {
             hasBouncedVertically = true;
+<<<<<<< HEAD
             if (hasBouncedVertically)
             {  
                 revertVertically();
@@ -152,6 +148,18 @@ public class Ball extends Actor
                     counter = 0;
                     incrementLevel();
                 }
+=======
+            Greenfoot.playSound("PingPong.wav");
+            noBounce = 60;
+            revertVertically();
+            hasBouncedVertically = false;
+            counter++;
+            incrementScore();
+            if (counter >= 10)
+            {
+                speed = speed + 1;
+                counter = 0;
+>>>>>>> 588a7fccc8336e8b7c1086fc198d3066339e718d
             }
         }
         else
@@ -168,6 +176,7 @@ public class Ball extends Actor
             if (! hasBouncedVertically)
             {
                 revertVertically();
+                Greenfoot.playSound("PingPong.wav");
             }
         }
         else
@@ -184,6 +193,7 @@ public class Ball extends Actor
     {
         if (isTouchingFloor())
         {
+            Greenfoot.playSound("gameover.mp3");
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             resetScore();
@@ -257,7 +267,7 @@ public class Ball extends Actor
      */
     private void init()
     {
-        speed = 2;
+        speed = 1;
         delay = DELAY_TIME;
         hasBouncedHorizontally = false;
         hasBouncedVertically = false;
