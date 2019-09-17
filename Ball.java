@@ -16,6 +16,7 @@ public class Ball extends Actor
 
     private int speed;
     private int counter;
+    private int noBounce;
     private boolean hasBouncedHorizontally;
     private boolean hasBouncedVertically;
     private int delay;
@@ -57,6 +58,7 @@ public class Ball extends Actor
             checkBounceOffWalls();
             checkBounceOffCeiling();
             checkBounceOffPaddle();
+            noBounce--;
             checkBounceOffTopPaddle();
             checkRestart();
         }
@@ -138,21 +140,19 @@ public class Ball extends Actor
     
     private void checkBounceOffPaddle()
     {
-        if (isTouchingPaddle())
+        if (isTouchingPaddle() && noBounce < 0)
         {
             hasBouncedVertically = true;
             Greenfoot.playSound("PingPong.wav");
-            if (hasBouncedVertically)
-            {  
-                revertVertically();
-                hasBouncedVertically = false;
-                counter++;
-                incrementScore();
-                if (counter >= 10)
-                {
-                    speed = speed + 1;
-                    counter = 0;
-                }
+            noBounce = 30;
+            revertVertically();
+            hasBouncedVertically = false;
+            counter++;
+            incrementScore();
+            if (counter >= 10)
+            {
+                speed = speed + 1;
+                counter = 0;
             }
         }
         else
