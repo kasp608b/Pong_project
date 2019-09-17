@@ -15,6 +15,7 @@ public class Ball extends Actor
     private static final int DELAY_TIME = 100;
 
     private int speed;
+    private int counter;
     private boolean hasBouncedHorizontally;
     private boolean hasBouncedVertically;
     private int delay;
@@ -42,6 +43,7 @@ public class Ball extends Actor
         }
         else
         {
+            drawScore();
             move(speed);
             checkBounceOffWalls();
             checkBounceOffCeiling();
@@ -129,11 +131,16 @@ public class Ball extends Actor
         {
             hasBouncedVertically = true;
             if (hasBouncedVertically)
-            {
-                    
+            {  
                 revertVertically();
                 hasBouncedVertically = false;
-
+                counter++;
+                incrementScore();
+                if (counter >= 10)
+                {
+                    speed = speed + 1;
+                    counter = 0;
+                }
             }
         }
         else
@@ -142,7 +149,7 @@ public class Ball extends Actor
         }
     }
     
-        private void checkBounceOffTopPaddle()
+    private void checkBounceOffTopPaddle()
     {
         if (isTouchingTopPaddle())
         
@@ -168,6 +175,7 @@ public class Ball extends Actor
         {
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+            resetScore();
         }
     }
 
@@ -189,6 +197,27 @@ public class Ball extends Actor
         int randomness = Greenfoot.getRandomNumber(BOUNCE_DEVIANCE_MAX)- BOUNCE_DEVIANCE_MAX / 2;
         setRotation((360 - getRotation()+ randomness + 360) % 360);
         hasBouncedVertically = true;
+    }
+    
+    private Score bounceScore;
+    private boolean scoreDrawn;
+    public void drawScore()
+    {
+        if (scoreDrawn != true)
+            bounceScore = new Score();
+        
+            getWorld().addObject(bounceScore, 100, 300);
+            scoreDrawn = true;
+    }
+    
+    public void incrementScore()
+    {
+            bounceScore.addScore();
+    }
+    
+    public void resetScore()
+    {
+        bounceScore.resetScore();
     }
 
     /**
