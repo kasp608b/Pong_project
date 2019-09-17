@@ -144,6 +144,7 @@ public class Ball extends Actor
             {
                 speed = speed + 1;
                 counter = 0;
+                incrementLevel();
             }
         }
         else
@@ -181,6 +182,7 @@ public class Ball extends Actor
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             resetScore();
+            resetLevel();
         }
     }
 
@@ -200,29 +202,44 @@ public class Ball extends Actor
     private void revertVertically()
     {
         int randomness = Greenfoot.getRandomNumber(BOUNCE_DEVIANCE_MAX)- BOUNCE_DEVIANCE_MAX / 2;
-        setRotation((360 - getRotation()+ randomness + 360) % 360);
+        setRotation(((360 - getRotation()+ randomness + 360) % 360));
         hasBouncedVertically = true;
     }
     
     private Score bounceScore;
+    private Score levelScore;
     private boolean scoreDrawn;
     public void drawScore()
     {
         if (scoreDrawn != true)
-            bounceScore = new Score();
+        {
+            bounceScore = new Score("Score: ");
+            levelScore = new Score("Level: ");
         
-            getWorld().addObject(bounceScore, 100, 300);
+            getWorld().addObject(bounceScore, 50, 50);
+            getWorld().addObject(levelScore, 150, 50);
             scoreDrawn = true;
+            resetScore();
+            resetLevel();
+        }
     }
     
     public void incrementScore()
     {
-            bounceScore.addScore();
+        bounceScore.addScore(1);
     }
-    
     public void resetScore()
     {
-        bounceScore.resetScore();
+        bounceScore.setScore(0);
+    }
+    
+    public void incrementLevel()
+    {
+        levelScore.addScore(1);
+    }
+    public void resetLevel()
+    {
+        levelScore.setScore(1);
     }
 
     /**
@@ -234,7 +251,7 @@ public class Ball extends Actor
         delay = DELAY_TIME;
         hasBouncedHorizontally = false;
         hasBouncedVertically = false;
-        setRotation(Greenfoot.getRandomNumber(STARTING_ANGLE_WIDTH)+STARTING_ANGLE_WIDTH/2);
+        setRotation((Greenfoot.getRandomNumber(STARTING_ANGLE_WIDTH)+STARTING_ANGLE_WIDTH/2));
     }
 
 }
