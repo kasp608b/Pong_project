@@ -186,6 +186,7 @@ public class Ball extends Actor
     {
         if (isTouchingFloor())
         {
+            Greenfoot.playSound("gameover.mp3");
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
             resetScore();
