@@ -12,7 +12,6 @@ public class PingWorld extends World
     private static final int WORLD_WIDTH = 500;
     private static final int WORLD_HEIGHT = 700;
     public static int paddle;
-    Score score = new Score();
     
     /**
      * Constructor for objects of class PingWorld.
@@ -44,10 +43,5 @@ public class PingWorld extends World
             addObject(new TopPaddle(100,20),60, Greenfoot.getRandomNumber((WORLD_HEIGHT/4))+50);
             paddle++;
         }
-    }
-    
-    public Score getScore()
-    {
-        return score;
     }
 }
