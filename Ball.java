@@ -124,10 +124,7 @@ public class Ball extends Actor
                 Greenfoot.playSound("PingPong.wav");
             }
         }
-        else
-        {
-            
-        }
+        
     }
     
     private void checkBounceOffPaddle()
@@ -148,10 +145,7 @@ public class Ball extends Actor
                 incrementLevel();
             }
         }
-        else
-        {
-            
-        }
+       
     }
     
     private void checkBounceOffTopPaddle()
@@ -165,10 +159,7 @@ public class Ball extends Actor
                 Greenfoot.playSound("PingPong.wav");
             }
         }
-        else
-        {
-            
-        }
+      
     }
 
     /**
