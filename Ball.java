@@ -52,6 +52,7 @@ public class Ball extends Actor
             noBounce--;
             checkBounceOffTopPaddle();
             checkRestart();
+            delay++;
         }
     }    
 
@@ -247,7 +248,7 @@ public class Ball extends Actor
      */
     private void init()
     {
-        speed = 1;
+        speed = 2;
         delay = DELAY_TIME;
         hasBouncedHorizontally = false;
         hasBouncedVertically = false;

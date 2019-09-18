@@ -11,7 +11,6 @@ public class Paddle extends Actor
 {
     private int width;
     private int height;
-    private int dx;
 
     /**
      * Constructs a new paddle with the given dimensions.
@@ -20,7 +19,6 @@ public class Paddle extends Actor
     {
         this.width = width;
         this.height = height;
-        dx = 1;
         setImage("leaf.jpg");
     }
 
@@ -40,13 +38,33 @@ public class Paddle extends Actor
     {
         if (Greenfoot.isKeyDown("left"))
         {
-            move(-2);
-            
+            if (Greenfoot.isKeyDown("up"))
+            {
+                move(-3);
+            }
+            else if (Greenfoot.isKeyDown("down"))
+            {
+                move(-1);
+            }
+            else
+            {
+                move(-2);
+            }
         }
         if (Greenfoot.isKeyDown("right"))
         {
-            move(2);
-    
+            if (Greenfoot.isKeyDown("up"))
+            {
+                move(3);
+            }
+            else if (Greenfoot.isKeyDown("down"))
+            {
+                move(1);
+            }
+            else
+            {
+                move(2);
+            }
         }
     }
     /**
