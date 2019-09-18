@@ -11,7 +11,6 @@ public class TopPaddle extends Actor
 {
     private int width;
     private int height;
-    private int dx;
 
     /**
      * Constructs a new paddle with the given dimensions.
@@ -20,7 +19,6 @@ public class TopPaddle extends Actor
     {
         this.width = width;
         this.height = height;
-        dx = 1;
         setImage("leaf.jpg");
     }
 
@@ -30,14 +28,14 @@ public class TopPaddle extends Actor
      */
     public void act() 
     {
-        setLocation(getX() + dx, getY());
-        tryChangeDirection();
+        move(1);
+        despawnOnWall();
     }    
 
     /**
      * Will rotate the paddle 180 degrees if the paddle is at worlds edge.
      */
-    private void tryChangeDirection()
+    private void despawnOnWall()
     {
         //Check to see if we are touching the outer boundaries of the world:
         // IF we are touching the right boundary OR we are touching the left boundary:
@@ -45,19 +43,6 @@ public class TopPaddle extends Actor
         {
             PingWorld.paddle = 0;
             getWorld().removeObject(this);
-            
         }
     }
-
-    /**
-     * Creates and sets an image for the paddle, the image will have the same dimensions as the paddles width and height.
-     */
-    private void createImage()
-    {
-        GreenfootImage image = new GreenfootImage(width, height);
-        image.setColor(Color.BLACK);
-        image.fill();
-        setImage(image);
-    }
-
 }
