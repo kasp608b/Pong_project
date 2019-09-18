@@ -15,6 +15,8 @@ public class Ball extends Actor
     private static final int DELAY_TIME = 100;
 
     private int speed;
+    private int score;
+    private int topScore;
     private int counter;
     private int noBounce;
     private boolean hasBouncedHorizontally;
@@ -182,6 +184,11 @@ public class Ball extends Actor
             Greenfoot.playSound("gameover.mp3");
             init();
             setLocation(getWorld().getWidth() / 2, getWorld().getHeight() / 2);
+            if (score > topScore)
+            {
+                topScore = score;
+                setHighscore(topScore);
+            }
             resetScore();
             resetLevel();
         }
@@ -208,17 +215,20 @@ public class Ball extends Actor
     }
     
     private Score bounceScore;
+    private Score highScore;
     private Score levelScore;
     private boolean scoreDrawn;
     public void drawScore()
     {
         if (scoreDrawn != true)
         {
+            highScore = new Score("Highscore: ");
             bounceScore = new Score("Score: ");
             levelScore = new Score("Level: ");
         
-            getWorld().addObject(bounceScore, 50, 50);
-            getWorld().addObject(levelScore, 150, 50);
+            getWorld().addObject(highScore, 70, 50);
+            getWorld().addObject(bounceScore, 50, 30);
+            getWorld().addObject(levelScore, 120, 30);
             scoreDrawn = true;
             resetScore();
             resetLevel();
@@ -228,10 +238,12 @@ public class Ball extends Actor
     public void incrementScore()
     {
         bounceScore.addScore(1);
+        score++;
     }
     public void resetScore()
     {
         bounceScore.setScore(0);
+        score = 0;
     }
     
     public void incrementLevel()
@@ -241,6 +253,11 @@ public class Ball extends Actor
     public void resetLevel()
     {
         levelScore.setScore(1);
+    }
+    
+    public void setHighscore(int high)
+    {
+        highScore.setScore(high);
     }
 
     /**
