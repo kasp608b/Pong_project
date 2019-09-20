@@ -14,6 +14,7 @@ public class Paddle extends Actor
 
     /**
      * Constructs a new paddle with the given dimensions.
+     * Adds the leaf.jpg.
      */
     public Paddle(int width, int height)
     {
@@ -32,7 +33,7 @@ public class Paddle extends Actor
     }    
 
     /**
-     * Will rotate the paddle 180 degrees if the paddle is at worlds edge.
+     * Gives speed and control of the paddle.
      */
     private void move()
     {

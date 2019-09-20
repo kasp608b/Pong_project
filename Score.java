@@ -39,13 +39,17 @@ public class Score extends Actor
         this.value = this.value + value;
         updateImage();
     }
-    
+    /**
+     * Changes the image of the scoreboard
+     */
     public void setScore(int value)
     {
         this.value = value;
         updateImage();
     }
-    
+    /**
+     * Returns the value to the scoreboard
+     */
     public int getValue()
     {
         return value;

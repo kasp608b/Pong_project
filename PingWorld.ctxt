@@ -6,4 +6,5 @@ comment1.target=PingWorld(boolean)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PingWorld.\r\n
 comment2.params=
 comment2.target=void\ act()
+comment2.text=\r\n\ If\ less\ than\ one\ paddle\ in\ game\ Spawn\ new\ paddle\ in\ the\ top\ 25%\ of\ the\ map\ -\ 50\ \r\n
 numComments=3

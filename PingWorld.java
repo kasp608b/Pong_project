@@ -36,6 +36,9 @@ public class PingWorld extends World
             Greenfoot.setWorld(new IntroWorld());
         }
     }
+    /**
+     * If less than one paddle in game Spawn new paddle in the top 25% of the map - 50 
+     */
     public void act()
     {
         if (paddle < 1)

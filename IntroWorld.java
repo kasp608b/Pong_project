@@ -21,7 +21,9 @@ public class IntroWorld extends World
         background.setColor(Color.BLACK);
         background.drawString("Intro world. Hit <enter> to start game...", WORLD_WIDTH / 2 - 100, WORLD_HEIGHT / 2);
     }
-    
+    /**
+     * Enters the pongworld via the "enter" button.
+     */
     public void act()
     {
         String key = Greenfoot.getKey();

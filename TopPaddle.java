@@ -4,8 +4,8 @@ import greenfoot.*;
 /**
  * A paddle is an object that goes back and forth. Though it would be nice if balls would bounce of it.
  * 
- * @author The teachers 
- * @version 1
+ * Version 0.1
+ * Group beast.
  */
 public class TopPaddle extends Actor
 {
@@ -23,8 +23,7 @@ public class TopPaddle extends Actor
     }
 
     /**
-     * Act - do whatever the TopPaddle wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - moves the paddle to the right of the screen, and despawns it when it touches the right side of the wall.
      */
     public void act() 
     {
@@ -33,7 +32,7 @@ public class TopPaddle extends Actor
     }    
 
     /**
-     * Will rotate the paddle 180 degrees if the paddle is at worlds edge.
+     * This is the despawnOnWall Method call.
      */
     private void despawnOnWall()
     {
